@@ -1,5 +1,7 @@
 from django.db import models
 from django.core.urlresolvers import reverse
+from decimal import Decimal
+from django.core.validators import MinValueValidator
 
 
 class Category(models.Model):
@@ -28,9 +30,7 @@ class Product(models.Model):
     slug = models.SlugField('Identificador', max_length=100)
     category = models.ForeignKey('catalog.Category', verbose_name='Categoria')
     description = models.TextField('Descrição', blank=True)
-    price = models.DecimalField('Preço', decimal_places=2, max_digits=8)
     barcode = models.BigIntegerField('Código de barras', blank=False)
-    superMarket = models.ForeignKey('catalog.SuperMarket', verbose_name='Super Mercado')
 
     created = models.DateTimeField('Criado em', auto_now_add=True)
     modified = models.DateTimeField('Modificado em', auto_now=True)
@@ -63,3 +63,19 @@ class SuperMarket(models.Model):
 
     def __str__(self):
         return self.name
+
+class Ad(models.Model):
+
+    product = models.ForeignKey('catalog.Product', verbose_name='Produto')
+    superMarket = models.ForeignKey('catalog.SuperMarket', verbose_name='Super Mercado')
+    price = models.DecimalField('Preço', decimal_places=2, max_digits=8, validators=[MinValueValidator(Decimal('0.01'))])
+
+    created = models.DateTimeField('Criado em', auto_now_add=True)
+    modified = models.DateTimeField('Modificado em', auto_now=True)
+
+    class Meta:
+        verbose_name = 'Anúncio'
+        verbose_name_plural = 'Anúncios'
+
+    def __str__(self):
+        return self.product.name

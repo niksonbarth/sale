@@ -2,7 +2,7 @@
 
 from django.contrib import admin
 
-from .models import Product, Category, SuperMarket
+from .models import Product, Category, SuperMarket, Ad
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -14,8 +14,8 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class ProductAdmin(admin.ModelAdmin):
 
-    list_display = ['name', 'slug', 'category', 'price', 'superMarket', 'created', 'modified']
-    search_fields = ['name', 'slug', 'category__name', 'superMarket__name']
+    list_display = ['name', 'slug', 'category', 'created', 'modified']
+    search_fields = ['name', 'slug', 'category__name']
     list_filter = ['created', 'modified']
 
 class SuperMarketAdmin(admin.ModelAdmin):
@@ -24,6 +24,13 @@ class SuperMarketAdmin(admin.ModelAdmin):
     search_fields = ['name', 'slug', 'city']
     list_filter = ['created', 'modified']
 
+class AdAdmin(admin.ModelAdmin):
+
+    list_display = ['product', 'superMarket', 'price', 'created', 'modified']
+    search_fields = ['product__name', 'superMarket__name', 'price' ]
+    list_filter = ['created', 'modified']
+
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(SuperMarket, SuperMarketAdmin)
+admin.site.register(Ad, AdAdmin)
