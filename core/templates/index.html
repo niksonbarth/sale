@@ -1,9 +1,77 @@
 {% extends "base.html" %}
 
 {% block container %}
-<div class="jumbotron page-header">
-  <h1>Django E-Commerce</h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-  <p><a class="btn btn-primary">Saiba mais</a></p>
-</div>
+<!-- Masthead -->
+<header class="masthead text-white text-center">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-9 mx-auto">
+        <h1 class="mb-5">Todos os preços em um só lugar</h1>
+      </div>
+      <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+        <form>
+          <div class="form-row">
+            <div class="col-12 col-md-9 mb-2 mb-md-0">
+              <input type="text" class="form-control form-control-lg" placeholder="O que você procura?">
+            </div>
+            <div class="col-12 col-md-3">
+              <button type="submit" class="btn btn-block btn-lg btn-primary">Buscar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Icons Grid -->
+<section class="features-icons bg-light text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#">Item One</a>
+              </h4>
+              <h5>$24.99</h5>
+            </div>
+            <div class="card-footer">
+                <img class="card-img-bottom" src="http://placehold.it/300x60" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#">Item One</a>
+              </h4>
+              <h5>$24.99</h5>
+            </div>
+            <div class="card-footer">
+                <img class="card-img-bottom" src="http://placehold.it/300x60" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#">Item One</a>
+              </h4>
+              <h5>$24.99</h5>
+            </div>
+            <div class="card-footer">
+                <img class="card-img-bottom" src="http://placehold.it/300x60" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 {% endblock %}
