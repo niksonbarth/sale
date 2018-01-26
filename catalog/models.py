@@ -69,6 +69,7 @@ class Ad(models.Model):
     product = models.ForeignKey('catalog.Product', verbose_name='Produto')
     superMarket = models.ForeignKey('catalog.SuperMarket', verbose_name='Super Mercado')
     price = models.DecimalField('Preço', decimal_places=2, max_digits=8, validators=[MinValueValidator(Decimal('0.01'))])
+    unit = models.ForeignKey('core.Unit', verbose_name='Unidade', null=False, blank=False)
 
     created = models.DateTimeField('Criado em', auto_now_add=True)
     modified = models.DateTimeField('Modificado em', auto_now=True)
