@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+
+{% block title %}
+    Listagem de Produtos | {{ block.super }}
+{% endblock %}
+
+{% block container %}
+<section class="features-icons bg-light text-center">
+    <div class="container">
+      <div class="row">
+        {% for category in category_list %}
+          <div class="col-lg-4">
+            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <a class="image-category" href="{{ category.get_absolute_url }}">
+                    <img class="image-category" src="{{ category.image.url }}" alt="{{ category.name }}" />
+                </a>
+              </div>
+              <h3>{{ category }}</h3>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endblock %}

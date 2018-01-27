@@ -6,6 +6,14 @@ from django.views import generic
 from .models import Product, Category
 
 
+class CategoriesListView(generic.ListView):
+    
+    model = Category
+    template_name = 'catalog/category_list.html'
+    paginate_by = 12
+
+category_list = CategoriesListView.as_view()
+
 class ProductListView(generic.ListView):
 
     model = Product
