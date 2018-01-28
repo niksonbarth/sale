@@ -30,7 +30,9 @@ class Product(models.Model):
     slug = models.SlugField('Identificador', max_length=100)
     category = models.ForeignKey('catalog.Category', verbose_name='Categoria')
     description = models.TextField('Descrição', blank=True)
-    barcode = models.BigIntegerField('Código de barras', blank=False)
+    barcode = models.BigIntegerField('Código de barras', blank=False, default=None)
+    size = models.FloatField('Tamanho', null=False, blank=False, default=None)
+    unit = models.ForeignKey('core.Unit', verbose_name='Unidade', null=False, blank=False, default=None)
 
     created = models.DateTimeField('Criado em', auto_now_add=True)
     modified = models.DateTimeField('Modificado em', auto_now=True)
@@ -68,8 +70,9 @@ class Ad(models.Model):
 
     product = models.ForeignKey('catalog.Product', verbose_name='Produto')
     superMarket = models.ForeignKey('catalog.SuperMarket', verbose_name='Super Mercado')
-    price = models.DecimalField('Preço', decimal_places=2, max_digits=8, validators=[MinValueValidator(Decimal('0.01'))])
-    unit = models.ForeignKey('core.Unit', verbose_name='Unidade', null=False, blank=False)
+    price = models.DecimalField('Preço', decimal_places=2, max_digits=8, validators=[MinValueValidator(Decimal('0.01'))], default=0)
+    quantity = models.IntegerField('Quantidade', null=False, blank=False, default=1)
+    image = models.ImageField(upload_to='catalog/ad/images', verbose_name='Imagem', null=True, blank=True)
 
     created = models.DateTimeField('Criado em', auto_now_add=True)
     modified = models.DateTimeField('Modificado em', auto_now=True)
