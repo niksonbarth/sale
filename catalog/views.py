@@ -25,8 +25,9 @@ product_list = ProductListView.as_view()
     
 class CategoryListView(generic.ListView):
 
-    template_name = 'catalog/category.html'
+    template_name = 'catalog/product_list.html'
     context_object_name = 'ad_list'
+    paginate_by = 12
 
     def get_queryset(self):
         ads = Ad.objects.filter(product__category__slug=self.kwargs['slug']).order_by('price')
@@ -42,7 +43,6 @@ class CategoryListView(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super(CategoryListView, self).get_context_data(**kwargs)
         context['current_category'] = get_object_or_404(Category, slug=self.kwargs['slug'])
-        context['categories'] = Category.objects.all()
         return context
 
 category = CategoryListView.as_view()
