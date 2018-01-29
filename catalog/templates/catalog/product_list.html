@@ -55,7 +55,7 @@
                 {% for ad in ad_list %}
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card h-100">
-                      <a href="{{ ad.product.get_absolute_url }}"><img class="card-img-top" src="{{ ad.image.url }}" alt="{{ ad.name }}"></a>
+                      <a href="{{ ad.product.get_absolute_url }}"><img class="card-img-top" src="{% if ad.image %} {{ ad.image.url }} {% else %} http://placehold.it/700x300 {% endif %}" alt="{{ ad.name }}"></a>
                       <div class="card-body">
                         <h4 class="card-title">
                           <a href="{{ ad.product.get_absolute_url }}">{{ ad.product }}</a>
