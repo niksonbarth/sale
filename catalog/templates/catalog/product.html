@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block title %}
     {{ product }} | {{ block.super }}
 {% endblock %}
@@ -18,17 +18,17 @@
       {{ product.description|linebreaks }}
   </div>
 </div> -->
-<div class="container" >
+<div class="container">
     <div class="row">&nbsp;</div>
     <div class="row">
-        <div class="col-md-5">
+        <div class="m-auto col-md-5">
             <a href="#">
-            <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/350x250" alt="">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="{% if firstAd.image %} {{ firstAd.image.url }} {% else %} http://placehold.it/700x300 {% endif %}" alt="">
             </a>
         </div>
         <div class="col-md-5">
             <h3>{{ product }}</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+            <p>{{ product.category }}</p>
             <a class="btn btn-primary" href="#">View Project</a>
         </div>
 
@@ -40,27 +40,19 @@
                     <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Username</th>
+                                <th>Super Mercado</th>
+                                <th class="text-right">Preço</th>
+                                <th class="text-right">Localização</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
+                            {% for ad in ads %}
+                                <tr>
+                                    <td >{{ ad.superMarket }}</td>
+                                    <td class="text-right">{{ ad.price }}</td>
+                                    <td class="text-right"><img class="figure-caption" src="{% static 'img/002-earth-globe.png' %}" alt="My image"/></td>
+                                </tr>    
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>

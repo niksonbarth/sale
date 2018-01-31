@@ -54,6 +54,13 @@ class ProductView(generic.TemplateView):
     def get_context_data(self, **kwargs):
         context = super(ProductView, self).get_context_data(**kwargs)
         context['product'] = Product.objects.get(slug=self.kwargs['slug'])
+        ads = Ad.objects.filter(product__slug=self.kwargs['slug']).order_by('price') 
+        context['ads'] = ads
+        try:
+            context['firstAd'] = ads[0]
+        except:
+            context['firstAd'] = None
+        
         return context
 
 product = ProductView.as_view()
