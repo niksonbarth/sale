@@ -28,6 +28,10 @@
     <link href="{% static 'css/custom.min.css' %}" rel="stylesheet" media="screen">
     <link href="{% static 'css/sb-admin-2.css' %}" rel="stylesheet" media="screen">
 
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    
 </head>
 
 <body>
@@ -69,10 +73,10 @@
             <h1 class="mb-5">Todos os preços em um só lugar</h1>
             </div>
             <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-            <form>
+            <form class="navbar-form navbar-left" role="search" action="{% url 'catalog:product_list' %}">
                 <div class="form-row">
                 <div class="col-12 col-md-9 mb-2 mb-md-0">
-                    <input type="text" class="form-control form-control-lg" placeholder="O que você procura?">
+                    <input name="q" type="text" class="form-control form-control-lg" placeholder="O que você procura?">
                 </div>
                 <div class="col-12 col-md-3">
                     <button type="submit" class="btn btn-block btn-lg btn-primary">Buscar</button>
@@ -133,9 +137,7 @@
         </div>
     </footer>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    
 
 </body>
 

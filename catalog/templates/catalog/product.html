@@ -5,6 +5,44 @@
 {% endblock %}
 
 {% block container %}
+
+<script type="text/javascript">
+    $(function(){
+       
+    var center = new google.maps.LatLng(59.76522, 18.35002);
+
+    function initialize() {
+
+        var mapOptions = {
+            zoom: 7,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            center: center
+        };
+
+        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+        var marker = new google.maps.Marker({
+            map: map,
+            position: center
+        });
+    }
+    
+    $('.launch-map').on('click', function () {
+        alert('teste');
+        $('#modalmap').modal({
+            backdrop: 'static',
+            keyboard: false
+        }).on('shown.bs.modal', function () {
+            google.maps.event.trigger(map, 'resize');
+            map.setCenter(center);
+        });
+    });
+
+    initialize();
+
+    })
+</script>
+
 <!-- <div class="page-header">
   <h1>{{ product }}a11</h1>
 </div>
@@ -17,7 +55,31 @@
   <div class="col-sm-8">
       {{ product.description|linebreaks }}
   </div>
-</div> -->
+</div>
+<div id="myModal" class="modal hide fade" role="dialog">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                        <div class="modal-header">
+                                <h4 class="modal-title">Modal Header</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <iframe 
+                                width="600" 
+                                height="450" 
+                                frameborder="0" 
+                                style="border:0" 
+                                allowfullscreen
+                                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7115.831802303022!2d-49.077285!3d-26.906164!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6c5f131d6b661e23!2sGiassi+Supermercados+-+Blumenau!5e0!3m2!1spt-BR!2sbr!4v1517692250087">
+                            </iframe>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                        </div>
+                    </div>
+                </div> 
+             -->
 <div class="container">
     <div class="row">&nbsp;</div>
     <div class="row">
@@ -50,15 +112,56 @@
                                 <tr>
                                     <td >{{ ad.superMarket }}</td>
                                     <td class="text-right">{{ ad.price }}</td>
-                                    <td class="text-right"><i class="fa fa-globe fa-2" aria-hidden="true"></i></td>
+                                    <td class="text-right">
+                                        <a class="fa-2 fa fa-globe launch-map" style="font-size: 2em;" aria-hidden="true" data-toggle="modal" data-target="#modalmap"></a>
+                                        <button class="btn launch-map">Launch Map</button>
+                                    </td>
                                 </tr>    
                             {% endfor %}
                         </tbody>
                     </table>
                 </div>
             </div>
-        </div>        
+        </div>       
+
+        
+        <div id="modalmap" class="modal hide fade">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div id="map-canvas"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-primary" data-value="1">Continue</button>
+                        <button type="button" data-dismiss="modal" class="btn" data-value="0">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <button id="btnTeste">Testar</button>
+
+        <h3>My Google Maps Demo</h3>
+        <div id="map"></div>
+        <script>
+            function initMap() {
+                var uluru = {lat: -25.363, lng: 131.044};
+                var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 4,
+                center: uluru
+                });
+                var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+                });
+            }
+        </script>
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+        </script>
+        
+    </body>
     </div>
 </div>
-
 {% endblock %}

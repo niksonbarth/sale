@@ -2,7 +2,7 @@
 
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
-from django.db.models.functions import Lower
+from django.db import models
 
 from .models import Product, Category, Ad
 
@@ -41,9 +41,17 @@ category = CategoryListView.as_view()
 
 class ProductListView(generic.ListView):
 
-    model = Product
     template_name = 'catalog/product_list.html'
-    paginate_by = 2
+    context_object_name = 'ad_list'
+    paginate_by = 12
+
+    def get_queryset(self):
+        q = self.request.GET.get('q', '')
+        if q:
+            ads = Ad.objects.filter(
+                models.Q(product__name__icontains=q) | models.Q(product__category__name__icontains=q)
+            )
+        return ads
 
 product_list = ProductListView.as_view()
 
@@ -64,10 +72,3 @@ class ProductView(generic.TemplateView):
         return context
 
 product = ProductView.as_view()
-
-# def product(request, slug):
-#      product = Product.objects.get(slug=slug)
-#      context = {
-#          'product': product
-#      }
-#      return render(request, 'catalog/product.html', context)
