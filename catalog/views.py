@@ -4,6 +4,8 @@ from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.db import models
 
+from watson import search as watson
+
 from .models import Product, Category, Ad
 
 
@@ -48,9 +50,7 @@ class ProductListView(generic.ListView):
     def get_queryset(self):
         q = self.request.GET.get('q', '')
         if q:
-            ads = Ad.objects.filter(
-                models.Q(product__name__icontains=q) | models.Q(product__category__name__icontains=q)
-            )
+            ads = watson.filter(Ad, q)
         return ads
 
 product_list = ProductListView.as_view()

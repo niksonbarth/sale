@@ -27,11 +27,7 @@
 
     <link href="{% static 'css/custom.min.css' %}" rel="stylesheet" media="screen">
     <link href="{% static 'css/sb-admin-2.css' %}" rel="stylesheet" media="screen">
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-    
+   
 </head>
 
 <body>
@@ -52,7 +48,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             {% for category in categories %}
-                                <li><a class="dropdown-item nav-link" href="{{ category.get_absolute_url }}">{{ category }}</a></li>
+                                <li><a class="dropdown-item nav-link page-scroll" href="{{ category.get_absolute_url }}" >{{ category }}</a></li>
                             {% endfor %}
                         </ul>
                     </li>
@@ -88,6 +84,7 @@
         </div>
     </header>
 
+    <div id="aa"></div>
     {% block container %}{% endblock %}
 
     <!-- Footer -->
@@ -137,7 +134,11 @@
         </div>
     </footer>
 
-    
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <script src="{% static 'js/script.js' %}"></script>
 
 </body>
 
