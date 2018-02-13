@@ -1,0 +1,15 @@
+dj-database-url==0.4.2
+dj-static==0.0.6
+Django==1.11.5
+django-ajax-selects==1.6.1
+django-taggit==0.22.1
+django-toolbelt==0.0.1
+django-watson==1.5.0
+django-widget-tweaks==1.4.1
+gunicorn==19.7.1
+Pillow==4.2.1
+pipenv==8.2.6
+psutil==5.3.1
+psycopg2==2.7.3.1
+whitenoise==3.3.1
+
