@@ -54,6 +54,7 @@ class SuperMarket(models.Model):
     slug = models.SlugField('Identificador', max_length=100)
     city = models.CharField('Cidade', max_length=255)
     image = models.ImageField(upload_to='catalog/supermarket/images', verbose_name='Imagem', null=True, blank=True)
+    localization = models.URLField('Localização', max_length=200)
 
     created = models.DateTimeField('Criado em', auto_now_add=True)
     modified = models.DateTimeField('Modificado em', auto_now=True)

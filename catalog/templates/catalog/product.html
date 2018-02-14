@@ -113,8 +113,7 @@
                                     <td >{{ ad.superMarket }}</td>
                                     <td class="text-right">{{ ad.price }}</td>
                                     <td class="text-right">
-                                        <a class="fa-2 fa fa-globe launch-map" style="font-size: 2em;" aria-hidden="true" data-toggle="modal" data-target="#modalmap"></a>
-                                        <button class="btn launch-map">Launch Map</button>
+                                        <a class="fa-2 fa fa-globe" style="font-size: 2em;" aria-hidden="true" href="{{ ad.superMarket.localization }}"></a>
                                     </td>
                                 </tr>    
                             {% endfor %}
@@ -123,44 +122,6 @@
                 </div>
             </div>
         </div>       
-
-        
-        <div id="modalmap" class="modal hide fade">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div id="map-canvas"></div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" data-dismiss="modal" class="btn btn-primary" data-value="1">Continue</button>
-                        <button type="button" data-dismiss="modal" class="btn" data-value="0">Cancel</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <button id="btnTeste">Testar</button>
-
-        <h3>My Google Maps Demo</h3>
-        <div id="map"></div>
-        <script>
-            function initMap() {
-                var uluru = {lat: -25.363, lng: 131.044};
-                var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 4,
-                center: uluru
-                });
-                var marker = new google.maps.Marker({
-                position: uluru,
-                map: map
-                });
-            }
-        </script>
-        <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
-        </script>
-        
     </body>
     </div>
 </div>
