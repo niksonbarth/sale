@@ -76,7 +76,9 @@
                                     <td >{{ ad.superMarket }}</td>
                                     <td class="text-right">{{ ad.price }}</td>
                                     <td class="text-right">
-                                        <a class="fa-2 fa fa-globe" style="font-size: 2em;" aria-hidden="true" target="_blank" href="{{ ad.superMarket.localization }}"></a>
+                                        <a target="_blank" href="{{ ad.superMarket.localization }}">
+                                            <i class="fa-2 fa fa-globe" style="font-size: 2em;"></i>
+                                        </a>
                                     </td>
                                 </tr>    
                             {% endfor %}
