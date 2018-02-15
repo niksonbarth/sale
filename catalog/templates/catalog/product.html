@@ -43,43 +43,6 @@
     })
 </script>
 
-<!-- <div class="page-header">
-  <h1>{{ product }}a11</h1>
-</div>
-<div class="row">
-  <div class="col-sm-4">
-      <a href="#" class="thumbnail">
-          <img src="http://placehold.it/350x250" alt="" />
-      </a>
-  </div>
-  <div class="col-sm-8">
-      {{ product.description|linebreaks }}
-  </div>
-</div>
-<div id="myModal" class="modal hide fade" role="dialog">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
-                <div class="modal-content">
-                        <div class="modal-header">
-                                <h4 class="modal-title">Modal Header</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <iframe 
-                                width="600" 
-                                height="450" 
-                                frameborder="0" 
-                                style="border:0" 
-                                allowfullscreen
-                                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7115.831802303022!2d-49.077285!3d-26.906164!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6c5f131d6b661e23!2sGiassi+Supermercados+-+Blumenau!5e0!3m2!1spt-BR!2sbr!4v1517692250087">
-                            </iframe>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                        </div>
-                    </div>
-                </div> 
-             -->
 <div class="container">
     <div class="row">&nbsp;</div>
     <div class="row">
@@ -113,7 +76,7 @@
                                     <td >{{ ad.superMarket }}</td>
                                     <td class="text-right">{{ ad.price }}</td>
                                     <td class="text-right">
-                                        <a class="fa-2 fa fa-globe" style="font-size: 2em;" aria-hidden="true" href="{{ ad.superMarket.localization }}"></a>
+                                        <a class="fa-2 fa fa-globe" style="font-size: 2em;" aria-hidden="true" target="_blank" href="{{ ad.superMarket.localization }}"></a>
                                     </td>
                                 </tr>    
                             {% endfor %}
